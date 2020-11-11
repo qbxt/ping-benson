@@ -20,7 +20,7 @@ func PingEndpoint(w http.ResponseWriter, r *http.Request) {
 		if ok1 {
 			ok3 = checkID(id[0])
 		}
-		logger.Debug("pingcheck", logrus.Fields{"ok": ok1, "ok2": ok2, "ok3": ok3})
+		//logger.Debug("pingcheck", logrus.Fields{"ok": ok1, "ok2": ok2, "ok3": ok3})
 		if ok2 && ok3 {
 			newPing := structures.Ping{
 				LastSeen: time.Now().UTC().Unix(),
