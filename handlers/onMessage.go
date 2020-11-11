@@ -28,9 +28,13 @@ func printStatus(s *discordgo.Session, m *discordgo.MessageCreate) {
 	for _, ping := range fullInit.Pings { // read-only, this could be safe idk
 		totalCount++
 		if isOnline(ping.LastSeen) {
-			f := &discordgo.MessageEmbedField {
+			f := &discordgo.MessageEmbedField{
 				Name: constants.ApprovedIDs[ping.ID],
-				Value: fmt.Sprintf("%s %sms", constants.EmojiGreen, ping.Value),
+			}
+			if ping.Value == "0" {
+				f.Value = fmt.Sprintf("%s Online", constants.EmojiGreen)
+			} else {
+				f.Value = fmt.Sprintf("%s %sms", constants.EmojiGreen, ping.Value)
 			}
 			e.Fields = append(e.Fields, f)
 		} else {
