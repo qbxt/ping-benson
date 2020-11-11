@@ -1,0 +1,4 @@
+.idea
+.idea/*
+constants/token.go
+*.py
