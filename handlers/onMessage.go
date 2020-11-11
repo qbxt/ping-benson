@@ -36,7 +36,7 @@ func printStatus(s *discordgo.Session, m *discordgo.MessageCreate) {
 		} else {
 			f := &discordgo.MessageEmbedField {
 				Name: constants.ApprovedIDs[ping.ID],
-				Value: fmt.Sprintf("%s Last seen %sm ago", constants.EmojiRed, time.Since(time.Unix(ping.LastSeen, 0)) / time.Minute),
+				Value: fmt.Sprintf("%s Last seen %f minutes ago", constants.EmojiRed, time.Since(time.Unix(ping.LastSeen, 0)).Minutes()),
 			}
 			e.Fields = append(e.Fields, f)
 			offlineCount++
